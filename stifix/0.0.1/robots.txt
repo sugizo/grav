@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /extract/
+Allow: /resume/
+Allow: /static/
+Allow: /thank-you/
