@@ -954,8 +954,8 @@ Stacktrace:
               Arguments
           </div>
           <div id="frame-code-args-0" class="code-block frame-args">
-              <ol class="linenums"><li><script> Sfdump = window.Sfdump || (function (doc) { var refStyle = doc.createElement('style'), rxEsc = /([.*+?^${}()|\[\]\/\\])/g, idRx = /\bsf-dump-\d+-ref[012]\w+\b/, keyHint = 0 <= navigator.platform.toUpperCase().indexOf('MAC') ? 'Cmd' : 'Ctrl', addEventListener = function (e, n, cb) { e.addEventListener(n, cb, false); }; (doc.documentElement.firstElementChild || doc.documentElement.children[0]).appendChild(refStyle); if (!doc.addEventListener) { addEventListener = function (element, eventName, callback) { element.attachEvent('on' + eventName, function (e) { e.preventDefault = function () {e.returnValue = false;}; e.target = e.srcElement; callback(e); }); }; } function toggle(a, recursive) { var s = a.nextSibling || {}, oldClass = s.className, arrow, newClass; if (/\bsf-dump-compact\b/.test(oldClass)) { arrow = '&#9660;'; newClass = 'sf-dump-expanded'; } else if (/\bsf-dump-expanded\b/.test(oldClass)) { arrow = '&#9654;'; newClass = 'sf-dump-compact'; } else { return false; } a.lastChild.innerHTML = arrow; s.className = s.className.replace(/\bsf-dump-(compact|expanded)\b/, newClass); if (recursive) { try { a = s.querySelectorAll('.'+oldClass); for (s = 0; s < a.length; ++s) { if (-1 == a[s].className.indexOf(newClass)) { a[s].className = newClass; a[s].previousSibling.lastChild.innerHTML = arrow; } } } catch (e) { } } return true; }; return function (root) { root = doc.getElementById(root); function a(e, f) { addEventListener(root, e, function (e) { if ('A' == e.target.tagName) { f(e.target, e); } else if ('A' == e.target.parentNode.tagName) { f(e.target.parentNode, e); } }); }; function isCtrlKey(e) { return e.ctrlKey || e.metaKey; } addEventListener(root, 'mouseover', function (e) { if ('' != refStyle.innerHTML) { refStyle.innerHTML = ''; } }); a('mouseover', function (a) { if (a = idRx.exec(a.className)) { try { refStyle.innerHTML = 'pre.sf-dump .'+a[0]+'{background-color: #B729D9; color: #FFF !important; border-radius: 2px}'; } catch (e) { } } }); a('click', function (a, e) { if (/\bsf-dump-toggle\b/.test(a.className)) { e.preventDefault(); if (!toggle(a, isCtrlKey(e))) { var r = doc.getElementById(a.getAttribute('href').substr(1)), s = r.previousSibling, f = r.parentNode, t = a.parentNode; t.replaceChild(r, a); f.replaceChild(a, s); t.insertBefore(s, r); f = f.firstChild.nodeValue.match(indentRx); t = t.firstChild.nodeValue.match(indentRx); if (f && t && f[0] !== t[0]) { r.innerHTML = r.innerHTML.replace(new RegExp('^'+f[0].replace(rxEsc, '\\$1'), 'mg'), t[0]); } if (/\bsf-dump-compact\b/.test(r.className)) { toggle(s, isCtrlKey(e)); } } if (doc.getSelection) { try { doc.getSelection().removeAllRanges(); } catch (e) { doc.getSelection().empty(); } } else { doc.selection.empty(); } } }); var indentRx = new RegExp('^('+(root.getAttribute('data-indent-pad') || ' ').replace(rxEsc, '\\$1')+')+', 'm'), elt = root.getElementsByTagName('A'), len = elt.length, i = 0, t = []; while (i < len) t.push(elt[i++]); elt = root.getElementsByTagName('SAMP'); len = elt.length; i = 0; while (i < len) t.push(elt[i++]); root = t; len = t.length; i = t = 0; while (i < len) { elt = root[i]; if ("SAMP" == elt.tagName) { elt.className = "sf-dump-expanded"; a = elt.previousSibling || {}; if ('A' != a.tagName) { a = doc.createElement('A'); a.className = 'sf-dump-ref'; elt.parentNode.insertBefore(a, elt); } else { a.innerHTML += ' '; } a.title = (a.title ? a.title+'\n[' : '[')+keyHint+'+click] Expand all children'; a.innerHTML += '<span>&#9660;</span>'; a.className += ' sf-dump-toggle'; if (!/\bsf-dump\b/.test(elt.parentNode.className)) { toggle(a); } } else if (/\bsf-dump-ref\b/.test(elt.className) && (a = elt.getAttribute('href'))) { a = a.substr(1); elt.className += ' '+a; if (/[\[{]$/.test(elt.previousSibling.nodeValue)) { a = a != elt.nextSibling.id && doc.getElementById(a); try { t = a.nextSibling; elt.appendChild(a); t.parentNode.insertBefore(a, t); if (/^[@#]/.test(elt.innerHTML)) { elt.innerHTML += ' <span>&#9654;</span>'; } else { elt.innerHTML = '<span>&#9654;</span>'; elt.className = 'sf-dump-ref'; } elt.className += ' sf-dump-toggle'; } catch (e) { if ('&' == elt.innerHTML.charAt(0)) { elt.innerHTML = '&hellip;'; elt.className = 'sf-dump-ref'; } } } } ++i; } }; })(document); </script><style> pre.sf-dump { display: block; white-space: pre; padding: 5px; } pre.sf-dump span { display: inline; } pre.sf-dump .sf-dump-compact { display: none; } pre.sf-dump abbr { text-decoration: none; border: none; cursor: help; } pre.sf-dump a { text-decoration: none; cursor: pointer; border: 0; outline: none; }pre.sf-dump{color:#FFFFFF; line-height:normal; font:12px "Inconsolata", "Fira Mono", "Source Code Pro", Monaco, Consolas, "Lucida Console", monospace !important; word-wrap: break-word; white-space: pre-wrap; position:relative; z-index:99999; word-break: normal}pre.sf-dump .sf-dump-num{color:#BCD42A}pre.sf-dump .sf-dump-const{color: #4bb1b1;}pre.sf-dump .sf-dump-str{color:#BCD42A}pre.sf-dump .sf-dump-note{color:#ef7c61}pre.sf-dump .sf-dump-ref{color:#A0A0A0}pre.sf-dump .sf-dump-public{color:#FFFFFF}pre.sf-dump .sf-dump-protected{color:#FFFFFF}pre.sf-dump .sf-dump-private{color:#FFFFFF}pre.sf-dump .sf-dump-meta{color:#FFFFFF}pre.sf-dump .sf-dump-key{color:#BCD42A}pre.sf-dump .sf-dump-index{color:#ef7c61}</style><pre class=sf-dump id=sf-dump-1056975296 data-indent-pad="  ">"<span class=sf-dump-str title="49 characters">Template &quot;recognitions.html.twig&quot; is not defined.</span>"
-</pre><script>Sfdump("sf-dump-1056975296")</script>
+              <ol class="linenums"><li><script> Sfdump = window.Sfdump || (function (doc) { var refStyle = doc.createElement('style'), rxEsc = /([.*+?^${}()|\[\]\/\\])/g, idRx = /\bsf-dump-\d+-ref[012]\w+\b/, keyHint = 0 <= navigator.platform.toUpperCase().indexOf('MAC') ? 'Cmd' : 'Ctrl', addEventListener = function (e, n, cb) { e.addEventListener(n, cb, false); }; (doc.documentElement.firstElementChild || doc.documentElement.children[0]).appendChild(refStyle); if (!doc.addEventListener) { addEventListener = function (element, eventName, callback) { element.attachEvent('on' + eventName, function (e) { e.preventDefault = function () {e.returnValue = false;}; e.target = e.srcElement; callback(e); }); }; } function toggle(a, recursive) { var s = a.nextSibling || {}, oldClass = s.className, arrow, newClass; if (/\bsf-dump-compact\b/.test(oldClass)) { arrow = '&#9660;'; newClass = 'sf-dump-expanded'; } else if (/\bsf-dump-expanded\b/.test(oldClass)) { arrow = '&#9654;'; newClass = 'sf-dump-compact'; } else { return false; } a.lastChild.innerHTML = arrow; s.className = s.className.replace(/\bsf-dump-(compact|expanded)\b/, newClass); if (recursive) { try { a = s.querySelectorAll('.'+oldClass); for (s = 0; s < a.length; ++s) { if (-1 == a[s].className.indexOf(newClass)) { a[s].className = newClass; a[s].previousSibling.lastChild.innerHTML = arrow; } } } catch (e) { } } return true; }; return function (root) { root = doc.getElementById(root); function a(e, f) { addEventListener(root, e, function (e) { if ('A' == e.target.tagName) { f(e.target, e); } else if ('A' == e.target.parentNode.tagName) { f(e.target.parentNode, e); } }); }; function isCtrlKey(e) { return e.ctrlKey || e.metaKey; } addEventListener(root, 'mouseover', function (e) { if ('' != refStyle.innerHTML) { refStyle.innerHTML = ''; } }); a('mouseover', function (a) { if (a = idRx.exec(a.className)) { try { refStyle.innerHTML = 'pre.sf-dump .'+a[0]+'{background-color: #B729D9; color: #FFF !important; border-radius: 2px}'; } catch (e) { } } }); a('click', function (a, e) { if (/\bsf-dump-toggle\b/.test(a.className)) { e.preventDefault(); if (!toggle(a, isCtrlKey(e))) { var r = doc.getElementById(a.getAttribute('href').substr(1)), s = r.previousSibling, f = r.parentNode, t = a.parentNode; t.replaceChild(r, a); f.replaceChild(a, s); t.insertBefore(s, r); f = f.firstChild.nodeValue.match(indentRx); t = t.firstChild.nodeValue.match(indentRx); if (f && t && f[0] !== t[0]) { r.innerHTML = r.innerHTML.replace(new RegExp('^'+f[0].replace(rxEsc, '\\$1'), 'mg'), t[0]); } if (/\bsf-dump-compact\b/.test(r.className)) { toggle(s, isCtrlKey(e)); } } if (doc.getSelection) { try { doc.getSelection().removeAllRanges(); } catch (e) { doc.getSelection().empty(); } } else { doc.selection.empty(); } } }); var indentRx = new RegExp('^('+(root.getAttribute('data-indent-pad') || ' ').replace(rxEsc, '\\$1')+')+', 'm'), elt = root.getElementsByTagName('A'), len = elt.length, i = 0, t = []; while (i < len) t.push(elt[i++]); elt = root.getElementsByTagName('SAMP'); len = elt.length; i = 0; while (i < len) t.push(elt[i++]); root = t; len = t.length; i = t = 0; while (i < len) { elt = root[i]; if ("SAMP" == elt.tagName) { elt.className = "sf-dump-expanded"; a = elt.previousSibling || {}; if ('A' != a.tagName) { a = doc.createElement('A'); a.className = 'sf-dump-ref'; elt.parentNode.insertBefore(a, elt); } else { a.innerHTML += ' '; } a.title = (a.title ? a.title+'\n[' : '[')+keyHint+'+click] Expand all children'; a.innerHTML += '<span>&#9660;</span>'; a.className += ' sf-dump-toggle'; if (!/\bsf-dump\b/.test(elt.parentNode.className)) { toggle(a); } } else if (/\bsf-dump-ref\b/.test(elt.className) && (a = elt.getAttribute('href'))) { a = a.substr(1); elt.className += ' '+a; if (/[\[{]$/.test(elt.previousSibling.nodeValue)) { a = a != elt.nextSibling.id && doc.getElementById(a); try { t = a.nextSibling; elt.appendChild(a); t.parentNode.insertBefore(a, t); if (/^[@#]/.test(elt.innerHTML)) { elt.innerHTML += ' <span>&#9654;</span>'; } else { elt.innerHTML = '<span>&#9654;</span>'; elt.className = 'sf-dump-ref'; } elt.className += ' sf-dump-toggle'; } catch (e) { if ('&' == elt.innerHTML.charAt(0)) { elt.innerHTML = '&hellip;'; elt.className = 'sf-dump-ref'; } } } } ++i; } }; })(document); </script><style> pre.sf-dump { display: block; white-space: pre; padding: 5px; } pre.sf-dump span { display: inline; } pre.sf-dump .sf-dump-compact { display: none; } pre.sf-dump abbr { text-decoration: none; border: none; cursor: help; } pre.sf-dump a { text-decoration: none; cursor: pointer; border: 0; outline: none; }pre.sf-dump{color:#FFFFFF; line-height:normal; font:12px "Inconsolata", "Fira Mono", "Source Code Pro", Monaco, Consolas, "Lucida Console", monospace !important; word-wrap: break-word; white-space: pre-wrap; position:relative; z-index:99999; word-break: normal}pre.sf-dump .sf-dump-num{color:#BCD42A}pre.sf-dump .sf-dump-const{color: #4bb1b1;}pre.sf-dump .sf-dump-str{color:#BCD42A}pre.sf-dump .sf-dump-note{color:#ef7c61}pre.sf-dump .sf-dump-ref{color:#A0A0A0}pre.sf-dump .sf-dump-public{color:#FFFFFF}pre.sf-dump .sf-dump-protected{color:#FFFFFF}pre.sf-dump .sf-dump-private{color:#FFFFFF}pre.sf-dump .sf-dump-meta{color:#FFFFFF}pre.sf-dump .sf-dump-key{color:#BCD42A}pre.sf-dump .sf-dump-index{color:#ef7c61}</style><pre class=sf-dump id=sf-dump-770911281 data-indent-pad="  ">"<span class=sf-dump-str title="49 characters">Template &quot;recognitions.html.twig&quot; is not defined.</span>"
+</pre><script>Sfdump("sf-dump-770911281")</script>
 </li></ol>          </div>
         
                 <div class="frame-comments empty">
@@ -1012,8 +1012,8 @@ Stacktrace:
               Arguments
           </div>
           <div id="frame-code-args-1" class="code-block frame-args">
-              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-2034878712 data-indent-pad="  ">"<span class=sf-dump-str title="49 characters">Template &quot;recognitions.html.twig&quot; is not defined.</span>"
-</pre><script>Sfdump("sf-dump-2034878712")</script>
+              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-1255085342 data-indent-pad="  ">"<span class=sf-dump-str title="49 characters">Template &quot;recognitions.html.twig&quot; is not defined.</span>"
+</pre><script>Sfdump("sf-dump-1255085342")</script>
 </li></ol>          </div>
         
                 <div class="frame-comments ">
@@ -1073,8 +1073,8 @@ Stacktrace:
               Arguments
           </div>
           <div id="frame-code-args-2" class="code-block frame-args">
-              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-1316464232 data-indent-pad="  ">"<span class=sf-dump-str title="22 characters">recognitions.html.twig</span>"
-</pre><script>Sfdump("sf-dump-1316464232")</script>
+              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-1715003139 data-indent-pad="  ">"<span class=sf-dump-str title="22 characters">recognitions.html.twig</span>"
+</pre><script>Sfdump("sf-dump-1715003139")</script>
 </li></ol>          </div>
         
                 <div class="frame-comments empty">
@@ -1131,8 +1131,8 @@ Stacktrace:
               Arguments
           </div>
           <div id="frame-code-args-3" class="code-block frame-args">
-              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-1147798456 data-indent-pad="  ">"<span class=sf-dump-str title="22 characters">recognitions.html.twig</span>"
-</pre><script>Sfdump("sf-dump-1147798456")</script>
+              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-1442726892 data-indent-pad="  ">"<span class=sf-dump-str title="22 characters">recognitions.html.twig</span>"
+</pre><script>Sfdump("sf-dump-1442726892")</script>
 </li></ol>          </div>
         
                 <div class="frame-comments empty">
@@ -1189,8 +1189,8 @@ Stacktrace:
               Arguments
           </div>
           <div id="frame-code-args-4" class="code-block frame-args">
-              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-609892702 data-indent-pad="  ">"<span class=sf-dump-str title="22 characters">recognitions.html.twig</span>"
-</pre><script>Sfdump("sf-dump-609892702")</script>
+              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-1483860174 data-indent-pad="  ">"<span class=sf-dump-str title="22 characters">recognitions.html.twig</span>"
+</pre><script>Sfdump("sf-dump-1483860174")</script>
 </li></ol>          </div>
         
                 <div class="frame-comments empty">
@@ -1247,9 +1247,9 @@ Stacktrace:
               Arguments
           </div>
           <div id="frame-code-args-5" class="code-block frame-args">
-              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-133343543 data-indent-pad="  ">"<span class=sf-dump-str title="22 characters">recognitions.html.twig</span>"
-</pre><script>Sfdump("sf-dump-133343543")</script>
-</li><li><pre class=sf-dump id=sf-dump-991785675 data-indent-pad="  "><span class=sf-dump-note>array:25</span> [<samp>
+              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-39928593 data-indent-pad="  ">"<span class=sf-dump-str title="22 characters">recognitions.html.twig</span>"
+</pre><script>Sfdump("sf-dump-39928593")</script>
+</li><li><pre class=sf-dump id=sf-dump-477135423 data-indent-pad="  "><span class=sf-dump-note>array:25</span> [<samp>
   "<span class=sf-dump-key>config</span>" => <abbr title="Grav\Common\Config\Config" class=sf-dump-note>Config</abbr> {}
   "<span class=sf-dump-key>system</span>" => <span class=sf-dump-note>array:22</span> [<samp>
     "<span class=sf-dump-key>absolute_urls</span>" => <span class=sf-dump-const>false</span>
@@ -1263,8 +1263,9 @@ Stacktrace:
     "<span class=sf-dump-key>username_regex</span>" => "<span class=sf-dump-str title="18 characters">^[a-z0-9_-]{3,16}$</span>"
     "<span class=sf-dump-key>pwd_regex</span>" => "<span class=sf-dump-str title="35 characters">(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}</span>"
     "<span class=sf-dump-key>languages</span>" => <span class=sf-dump-note>array:7</span> [<samp>
-      "<span class=sf-dump-key>supported</span>" => <span class=sf-dump-note>array:1</span> [<samp>
+      "<span class=sf-dump-key>supported</span>" => <span class=sf-dump-note>array:2</span> [<samp>
         <span class=sf-dump-index>0</span> => "<span class=sf-dump-str title="2 characters">en</span>"
+        <span class=sf-dump-index>1</span> => "<span class=sf-dump-str title="2 characters">id</span>"
       </samp>]
       "<span class=sf-dump-key>include_default_lang</span>" => <span class=sf-dump-const>false</span>
       "<span class=sf-dump-key>translations</span>" => <span class=sf-dump-const>true</span>
@@ -1275,7 +1276,7 @@ Stacktrace:
     </samp>]
     "<span class=sf-dump-key>home</span>" => <span class=sf-dump-note>array:2</span> [<samp>
       "<span class=sf-dump-key>alias</span>" => "<span class=sf-dump-str title="5 characters">/home</span>"
-      "<span class=sf-dump-key>hide_in_urls</span>" => <span class=sf-dump-const>false</span>
+      "<span class=sf-dump-key>hide_in_urls</span>" => <span class=sf-dump-const>true</span>
     </samp>]
     "<span class=sf-dump-key>pages</span>" => <span class=sf-dump-note>array:25</span> [<samp>
       "<span class=sf-dump-key>theme</span>" => "<span class=sf-dump-str title="11 characters">big-picture</span>"
@@ -1416,7 +1417,7 @@ Stacktrace:
     "<span class=sf-dump-key>session</span>" => <span class=sf-dump-note>array:7</span> [<samp>
       "<span class=sf-dump-key>enabled</span>" => <span class=sf-dump-const>true</span>
       "<span class=sf-dump-key>timeout</span>" => <span class=sf-dump-num>1800</span>
-      "<span class=sf-dump-key>name</span>" => "<span class=sf-dump-str title="9 characters">grav-site</span>"
+      "<span class=sf-dump-key>name</span>" => "<span class=sf-dump-str title="6 characters">stifix</span>"
       "<span class=sf-dump-key>secure</span>" => <span class=sf-dump-const>false</span>
       "<span class=sf-dump-key>httponly</span>" => <span class=sf-dump-const>true</span>
       "<span class=sf-dump-key>split</span>" => <span class=sf-dump-const>true</span>
@@ -1430,13 +1431,8 @@ Stacktrace:
       "<span class=sf-dump-key>official_gpm_only</span>" => <span class=sf-dump-const>true</span>
     </samp>]
   </samp>]
-  "<span class=sf-dump-key>theme</span>" => <span class=sf-dump-note>array:3</span> [<samp>
+  "<span class=sf-dump-key>theme</span>" => <span class=sf-dump-note>array:2</span> [<samp>
     "<span class=sf-dump-key>enabled</span>" => <span class=sf-dump-const>true</span>
-    "<span class=sf-dump-key>footer_items</span>" => <span class=sf-dump-note>array:1</span> [<samp>
-      <span class=sf-dump-index>0</span> => <span class=sf-dump-note>array:1</span> [<samp>
-        "<span class=sf-dump-key>item</span>" => "<span class=sf-dump-str title="57 characters">&copy; 2017 &lt;a title=&quot;stifix&quot;&gt;stifix&lt;/a&gt;. All rights reserved.</span>"
-      </samp>]
-    </samp>]
     "<span class=sf-dump-key>footer_icons</span>" => <span class=sf-dump-note>array:3</span> [<samp>
       <span class=sf-dump-index>0</span> => <span class=sf-dump-note>array:2</span> [<samp>
         "<span class=sf-dump-key>icon</span>" => "<span class=sf-dump-str title="11 characters">fa-facebook</span>"
@@ -1452,7 +1448,7 @@ Stacktrace:
       </samp>]
     </samp>]
   </samp>]
-  "<span class=sf-dump-key>site</span>" => <span class=sf-dump-note>array:15</span> [<samp>
+  "<span class=sf-dump-key>site</span>" => <span class=sf-dump-note>array:11</span> [<samp>
     "<span class=sf-dump-key>title</span>" => "<span class=sf-dump-str title="6 characters">Stifix</span>"
     "<span class=sf-dump-key>default_lang</span>" => "<span class=sf-dump-str title="2 characters">en</span>"
     "<span class=sf-dump-key>author</span>" => <span class=sf-dump-note>array:2</span> [<samp>
@@ -1469,7 +1465,7 @@ Stacktrace:
       "<span class=sf-dump-key>viewport</span>" => "<span class=sf-dump-str title="93 characters">width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no</span>"
       "<span class=sf-dump-key>robots</span>" => "<span class=sf-dump-str title="3 characters">all</span>"
       "<span class=sf-dump-key>description</span>" => "<span class=sf-dump-str title="30 characters">Stifix Company Profile Website</span>"
-      "<span class=sf-dump-key>keywords</span>" => "<span class=sf-dump-str title="236 characters">Stifix, IT, IT Services, IT Solutions, IT Security, IT Monitoring, IT Development, IT Maintenance, IT Configuration, IT Support, IT Installation, IT Upgrade, Linux, Unix, Windows, Virtualization, Cloud Computing, Mobile, Web Development</span>"
+      "<span class=sf-dump-key>keywords</span>" => "<span class=sf-dump-str title="522 characters">Stifix, IT, IT Services, IT Solutions, IT Security, IT Monitoring, IT Development, IT Maintenance, IT Configuration, IT Support, IT Installation, IT Upgrade, IT Analyst, IT Development, IT Testing, System, System Services, System Solutions, Security System, Monitoring System, System Development, Maintenance System, Configuration System, System Support, Installation System, Upgrade System, System Analyst, System Development, Testing System, Linux, Unix, Windows, Virtualization, Cloud Computing, Mobile, Web Development</span>"
       "<span class=sf-dump-key>author</span>" => "<span class=sf-dump-str title="13 characters">Stifan Kristi</span>"
       "<span class=sf-dump-key>google-site-verification</span>" => "<span class=sf-dump-str title="43 characters">ibaNUNECBXNjZi_FDdbSRZv9nIhCdZsJQ6n27Qfv1Tk</span>"
       "<span class=sf-dump-key>og:title</span>" => "<span class=sf-dump-str title="6 characters">Stifix</span>"
@@ -1502,36 +1498,6 @@ Stacktrace:
       "<span class=sf-dump-key>priority</span>" => <span class=sf-dump-num>1</span>
     </samp>]
     "<span class=sf-dump-key>cache_enable</span>" => <span class=sf-dump-const>true</span>
-    "<span class=sf-dump-key>description</span>" => "<span class=sf-dump-str title="13 characters">IT Consultant</span>"
-    "<span class=sf-dump-key>website</span>" => "<span class=sf-dump-str title="10 characters">stifix.com</span>"
-    "<span class=sf-dump-key>address</span>" => <span class=sf-dump-note>array:3</span> [<samp>
-      <span class=sf-dump-index>0</span> => <span class=sf-dump-note>array:1</span> [<samp>
-        "<span class=sf-dump-key>line</span>" => "<span class=sf-dump-str title="21 characters">Kacang Polong 3 No 18</span>"
-      </samp>]
-      <span class=sf-dump-index>1</span> => <span class=sf-dump-note>array:1</span> [<samp>
-        "<span class=sf-dump-key>line</span>" => "<span class=sf-dump-str title="7 characters">Jakarta</span>"
-      </samp>]
-      <span class=sf-dump-index>2</span> => <span class=sf-dump-note>array:1</span> [<samp>
-        "<span class=sf-dump-key>line</span>" => "<span class=sf-dump-str title="9 characters">Indonesia</span>"
-      </samp>]
-    </samp>]
-    "<span class=sf-dump-key>contact</span>" => <span class=sf-dump-note>array:3</span> [<samp>
-      <span class=sf-dump-index>0</span> => <span class=sf-dump-note>array:3</span> [<samp>
-        "<span class=sf-dump-key>line</span>" => "<span class=sf-dump-str title="24 characters">stifan.kristi@stifix.com</span>"
-        "<span class=sf-dump-key>icon</span>" => "<span class=sf-dump-str title="7 characters">fi-mail</span>"
-        "<span class=sf-dump-key>link</span>" => "<span class=sf-dump-str title="31 characters">mailto:stifan.kristi@stifix.com</span>"
-      </samp>]
-      <span class=sf-dump-index>1</span> => <span class=sf-dump-note>array:3</span> [<samp>
-        "<span class=sf-dump-key>line</span>" => "<span class=sf-dump-str title="12 characters">+62818783118</span>"
-        "<span class=sf-dump-key>icon</span>" => "<span class=sf-dump-str title="9 characters">fi-mobile</span>"
-        "<span class=sf-dump-key>link</span>" => "<span class=sf-dump-str title="16 characters">tel:+62818783118</span>"
-      </samp>]
-      <span class=sf-dump-index>2</span> => <span class=sf-dump-note>array:3</span> [<samp>
-        "<span class=sf-dump-key>line</span>" => "<span class=sf-dump-str title="14 characters">+6285888607267</span>"
-        "<span class=sf-dump-key>icon</span>" => "<span class=sf-dump-str title="9 characters">fi-mobile</span>"
-        "<span class=sf-dump-key>link</span>" => "<span class=sf-dump-str title="18 characters">tel:+6285888607267</span>"
-      </samp>]
-    </samp>]
   </samp>]
   "<span class=sf-dump-key>uri</span>" => <abbr title="Grav\Common\Uri" class=sf-dump-note>Uri</abbr> {}
   "<span class=sf-dump-key>assets</span>" => <abbr title="Grav\Common\Assets" class=sf-dump-note>Assets</abbr> {}
@@ -1555,7 +1521,7 @@ Stacktrace:
   "<span class=sf-dump-key>media</span>" => <abbr title="Grav\Common\Page\Media" class=sf-dump-note>Media</abbr> {}
   "<span class=sf-dump-key>content</span>" => ""
 </samp>]
-</pre><script>Sfdump("sf-dump-991785675")</script>
+</pre><script>Sfdump("sf-dump-477135423")</script>
 </li></ol>          </div>
         
                 <div class="frame-comments empty">
@@ -1596,8 +1562,8 @@ class OutputServiceProvider implements ServiceProviderInterface
               Arguments
           </div>
           <div id="frame-code-args-6" class="code-block frame-args">
-              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-1167475461 data-indent-pad="  ">"<span class=sf-dump-str title="4 characters">html</span>"
-</pre><script>Sfdump("sf-dump-1167475461")</script>
+              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-1178031481 data-indent-pad="  ">"<span class=sf-dump-str title="4 characters">html</span>"
+</pre><script>Sfdump("sf-dump-1178031481")</script>
 </li></ol>          </div>
         
                 <div class="frame-comments empty">
@@ -1654,8 +1620,8 @@ class OutputServiceProvider implements ServiceProviderInterface
               Arguments
           </div>
           <div id="frame-code-args-7" class="code-block frame-args">
-              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-1409644292 data-indent-pad="  "><abbr title="Grav\Common\Grav" class=sf-dump-note>Grav</abbr> {}
-</pre><script>Sfdump("sf-dump-1409644292")</script>
+              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-125443941 data-indent-pad="  "><abbr title="Grav\Common\Grav" class=sf-dump-note>Grav</abbr> {}
+</pre><script>Sfdump("sf-dump-125443941")</script>
 </li></ol>          </div>
         
                 <div class="frame-comments empty">
@@ -1712,8 +1678,8 @@ class RenderProcessor extends ProcessorBase implements ProcessorInterface
               Arguments
           </div>
           <div id="frame-code-args-8" class="code-block frame-args">
-              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-1336915679 data-indent-pad="  ">"<span class=sf-dump-str title="6 characters">output</span>"
-</pre><script>Sfdump("sf-dump-1336915679")</script>
+              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-1865011251 data-indent-pad="  ">"<span class=sf-dump-str title="6 characters">output</span>"
+</pre><script>Sfdump("sf-dump-1865011251")</script>
 </li></ol>          </div>
         
                 <div class="frame-comments empty">
@@ -1872,11 +1838,11 @@ class RenderProcessor extends ProcessorBase implements ProcessorInterface
               Arguments
           </div>
           <div id="frame-code-args-11" class="code-block frame-args">
-              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-7855652 data-indent-pad="  ">"<span class=sf-dump-str title="6 characters">render</span>"
-</pre><script>Sfdump("sf-dump-7855652")</script>
-</li><li><pre class=sf-dump id=sf-dump-1439313011 data-indent-pad="  ">"<span class=sf-dump-str title="6 characters">Render</span>"
-</pre><script>Sfdump("sf-dump-1439313011")</script>
-</li><li><pre class=sf-dump id=sf-dump-177897531 data-indent-pad="  "><span class=sf-dump-note>Closure</span> {<samp>
+              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-78554510 data-indent-pad="  ">"<span class=sf-dump-str title="6 characters">render</span>"
+</pre><script>Sfdump("sf-dump-78554510")</script>
+</li><li><pre class=sf-dump id=sf-dump-1030080207 data-indent-pad="  ">"<span class=sf-dump-str title="6 characters">Render</span>"
+</pre><script>Sfdump("sf-dump-1030080207")</script>
+</li><li><pre class=sf-dump id=sf-dump-2129789000 data-indent-pad="  "><span class=sf-dump-note>Closure</span> {<samp>
   <span class=sf-dump-meta>class</span>: "<span class=sf-dump-str title="16 characters">Grav\Common\Grav</span>"
   <span class=sf-dump-meta>this</span>: <abbr title="Grav\Common\Grav" class=sf-dump-note>Grav</abbr> { &hellip;}
   <span class=sf-dump-meta>use</span>: {<samp>
@@ -1885,7 +1851,7 @@ class RenderProcessor extends ProcessorBase implements ProcessorInterface
   <span class=sf-dump-meta>file</span>: "<span class=sf-dump-str title="76 characters">/Applications/XAMPP/xamppfiles/htdocs/stifix/system/src/Grav/Common/Grav.php</span>"
   <span class=sf-dump-meta>line</span>: "<span class=sf-dump-str title="10 characters">131 to 133</span>"
 </samp>}
-</pre><script>Sfdump("sf-dump-177897531")</script>
+</pre><script>Sfdump("sf-dump-2129789000")</script>
 </li></ol>          </div>
         
                 <div class="frame-comments empty">
@@ -1942,7 +1908,7 @@ class RenderProcessor extends ProcessorBase implements ProcessorInterface
               Arguments
           </div>
           <div id="frame-code-args-12" class="code-block frame-args">
-              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-2039164806 data-indent-pad="  "><span class=sf-dump-note>Closure</span> {<samp>
+              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-978209487 data-indent-pad="  "><span class=sf-dump-note>Closure</span> {<samp>
   <span class=sf-dump-meta>class</span>: "<span class=sf-dump-str title="16 characters">Grav\Common\Grav</span>"
   <span class=sf-dump-meta>parameters</span>: {<samp>
     <span class=sf-dump-meta>$timerId</span>: {}
@@ -1955,8 +1921,8 @@ class RenderProcessor extends ProcessorBase implements ProcessorInterface
   <span class=sf-dump-meta>file</span>: "<span class=sf-dump-str title="76 characters">/Applications/XAMPP/xamppfiles/htdocs/stifix/system/src/Grav/Common/Grav.php</span>"
   <span class=sf-dump-meta>line</span>: "<span class=sf-dump-str title="10 characters">377 to 381</span>"
 </samp>}
-</pre><script>Sfdump("sf-dump-2039164806")</script>
-</li><li><pre class=sf-dump id=sf-dump-949856863 data-indent-pad="  "><span class=sf-dump-note>array:3</span> [<samp>
+</pre><script>Sfdump("sf-dump-978209487")</script>
+</li><li><pre class=sf-dump id=sf-dump-311909570 data-indent-pad="  "><span class=sf-dump-note>array:3</span> [<samp>
   <span class=sf-dump-index>0</span> => "<span class=sf-dump-str title="6 characters">render</span>"
   <span class=sf-dump-index>1</span> => "<span class=sf-dump-str title="6 characters">Render</span>"
   <span class=sf-dump-index>2</span> => <span class=sf-dump-note>Closure</span> {<samp>
@@ -1969,7 +1935,7 @@ class RenderProcessor extends ProcessorBase implements ProcessorInterface
     <span class=sf-dump-meta>line</span>: "<span class=sf-dump-str title="10 characters">131 to 133</span>"
   </samp>}
 </samp>]
-</pre><script>Sfdump("sf-dump-949856863")</script>
+</pre><script>Sfdump("sf-dump-311909570")</script>
 </li></ol>          </div>
         
                 <div class="frame-comments empty">
@@ -2026,9 +1992,9 @@ class RenderProcessor extends ProcessorBase implements ProcessorInterface
               Arguments
           </div>
           <div id="frame-code-args-13" class="code-block frame-args">
-              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-506072525 data-indent-pad="  ">"<span class=sf-dump-str title="11 characters">measureTime</span>"
-</pre><script>Sfdump("sf-dump-506072525")</script>
-</li><li><pre class=sf-dump id=sf-dump-1236093975 data-indent-pad="  "><span class=sf-dump-note>array:3</span> [<samp>
+              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-902859239 data-indent-pad="  ">"<span class=sf-dump-str title="11 characters">measureTime</span>"
+</pre><script>Sfdump("sf-dump-902859239")</script>
+</li><li><pre class=sf-dump id=sf-dump-1345460885 data-indent-pad="  "><span class=sf-dump-note>array:3</span> [<samp>
   <span class=sf-dump-index>0</span> => "<span class=sf-dump-str title="6 characters">render</span>"
   <span class=sf-dump-index>1</span> => "<span class=sf-dump-str title="6 characters">Render</span>"
   <span class=sf-dump-index>2</span> => <span class=sf-dump-note>Closure</span> {<samp>
@@ -2041,7 +2007,7 @@ class RenderProcessor extends ProcessorBase implements ProcessorInterface
     <span class=sf-dump-meta>line</span>: "<span class=sf-dump-str title="10 characters">131 to 133</span>"
   </samp>}
 </samp>]
-</pre><script>Sfdump("sf-dump-1236093975")</script>
+</pre><script>Sfdump("sf-dump-1345460885")</script>
 </li></ol>          </div>
         
                 <div class="frame-comments empty">
@@ -2098,11 +2064,11 @@ class RenderProcessor extends ProcessorBase implements ProcessorInterface
               Arguments
           </div>
           <div id="frame-code-args-14" class="code-block frame-args">
-              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-1933300152 data-indent-pad="  ">"<span class=sf-dump-str title="6 characters">render</span>"
-</pre><script>Sfdump("sf-dump-1933300152")</script>
-</li><li><pre class=sf-dump id=sf-dump-583179985 data-indent-pad="  ">"<span class=sf-dump-str title="6 characters">Render</span>"
-</pre><script>Sfdump("sf-dump-583179985")</script>
-</li><li><pre class=sf-dump id=sf-dump-713312548 data-indent-pad="  "><span class=sf-dump-note>Closure</span> {<samp>
+              <ol class="linenums"><li><pre class=sf-dump id=sf-dump-575581881 data-indent-pad="  ">"<span class=sf-dump-str title="6 characters">render</span>"
+</pre><script>Sfdump("sf-dump-575581881")</script>
+</li><li><pre class=sf-dump id=sf-dump-1066794538 data-indent-pad="  ">"<span class=sf-dump-str title="6 characters">Render</span>"
+</pre><script>Sfdump("sf-dump-1066794538")</script>
+</li><li><pre class=sf-dump id=sf-dump-2060898673 data-indent-pad="  "><span class=sf-dump-note>Closure</span> {<samp>
   <span class=sf-dump-meta>class</span>: "<span class=sf-dump-str title="16 characters">Grav\Common\Grav</span>"
   <span class=sf-dump-meta>this</span>: <abbr title="Grav\Common\Grav" class=sf-dump-note>Grav</abbr> { &hellip;}
   <span class=sf-dump-meta>use</span>: {<samp>
@@ -2111,7 +2077,7 @@ class RenderProcessor extends ProcessorBase implements ProcessorInterface
   <span class=sf-dump-meta>file</span>: "<span class=sf-dump-str title="76 characters">/Applications/XAMPP/xamppfiles/htdocs/stifix/system/src/Grav/Common/Grav.php</span>"
   <span class=sf-dump-meta>line</span>: "<span class=sf-dump-str title="10 characters">131 to 133</span>"
 </samp>}
-</pre><script>Sfdump("sf-dump-713312548")</script>
+</pre><script>Sfdump("sf-dump-2060898673")</script>
 </li></ol>          </div>
         
                 <div class="frame-comments empty">
@@ -2186,14 +2152,14 @@ try {
               </thead>
                           <tr>
                 <td>user</td>
-                <td><pre class=sf-dump id=sf-dump-14019944 data-indent-pad="  "><abbr title="Grav\Common\User\User" class=sf-dump-note>User</abbr> {}
-</pre><script>Sfdump("sf-dump-14019944")</script>
+                <td><pre class=sf-dump id=sf-dump-1964237491 data-indent-pad="  "><abbr title="Grav\Common\User\User" class=sf-dump-note>User</abbr> {}
+</pre><script>Sfdump("sf-dump-1964237491")</script>
 </td>
               </tr>
                           <tr>
                 <td>redirect_after_login</td>
-                <td><pre class=sf-dump id=sf-dump-1553561007 data-indent-pad="  ">"<span class=sf-dump-str title="20 characters">/resume/recognitions</span>"
-</pre><script>Sfdump("sf-dump-1553561007")</script>
+                <td><pre class=sf-dump id=sf-dump-2021025954 data-indent-pad="  ">"<span class=sf-dump-str title="20 characters">/resume/recognitions</span>"
+</pre><script>Sfdump("sf-dump-2021025954")</script>
 </td>
               </tr>
                         </table>
@@ -2209,182 +2175,182 @@ try {
               </thead>
                           <tr>
                 <td>REDIRECT_UNIQUE_ID</td>
-                <td><pre class=sf-dump id=sf-dump-1737697779 data-indent-pad="  ">"<span class=sf-dump-str title="24 characters">Wekzp38AAAEAAIngwacAAAAD</span>"
-</pre><script>Sfdump("sf-dump-1737697779")</script>
+                <td><pre class=sf-dump id=sf-dump-1166494524 data-indent-pad="  ">"<span class=sf-dump-str title="24 characters">WfEiQX8AAAEAAXB9aXMAAAAC</span>"
+</pre><script>Sfdump("sf-dump-1166494524")</script>
 </td>
               </tr>
                           <tr>
                 <td>REDIRECT_STATUS</td>
-                <td><pre class=sf-dump id=sf-dump-1831218678 data-indent-pad="  ">"<span class=sf-dump-str title="3 characters">200</span>"
-</pre><script>Sfdump("sf-dump-1831218678")</script>
+                <td><pre class=sf-dump id=sf-dump-1914427004 data-indent-pad="  ">"<span class=sf-dump-str title="3 characters">200</span>"
+</pre><script>Sfdump("sf-dump-1914427004")</script>
 </td>
               </tr>
                           <tr>
                 <td>UNIQUE_ID</td>
-                <td><pre class=sf-dump id=sf-dump-1160337723 data-indent-pad="  ">"<span class=sf-dump-str title="24 characters">Wekzp38AAAEAAIngwacAAAAD</span>"
-</pre><script>Sfdump("sf-dump-1160337723")</script>
+                <td><pre class=sf-dump id=sf-dump-1096473211 data-indent-pad="  ">"<span class=sf-dump-str title="24 characters">WfEiQX8AAAEAAXB9aXMAAAAC</span>"
+</pre><script>Sfdump("sf-dump-1096473211")</script>
 </td>
               </tr>
                           <tr>
                 <td>HTTP_HOST</td>
-                <td><pre class=sf-dump id=sf-dump-1896184531 data-indent-pad="  ">"<span class=sf-dump-str title="9 characters">localhost</span>"
-</pre><script>Sfdump("sf-dump-1896184531")</script>
+                <td><pre class=sf-dump id=sf-dump-2067587862 data-indent-pad="  ">"<span class=sf-dump-str title="9 characters">localhost</span>"
+</pre><script>Sfdump("sf-dump-2067587862")</script>
 </td>
               </tr>
                           <tr>
                 <td>HTTP_ACCEPT</td>
-                <td><pre class=sf-dump id=sf-dump-1881551158 data-indent-pad="  ">"<span class=sf-dump-str title="3 characters">*/*</span>"
-</pre><script>Sfdump("sf-dump-1881551158")</script>
+                <td><pre class=sf-dump id=sf-dump-101271226 data-indent-pad="  ">"<span class=sf-dump-str title="3 characters">*/*</span>"
+</pre><script>Sfdump("sf-dump-101271226")</script>
 </td>
               </tr>
                           <tr>
                 <td>PATH</td>
-                <td><pre class=sf-dump id=sf-dump-1026302265 data-indent-pad="  ">"<span class=sf-dump-str title="143 characters">/usr/local/opt/icu4c/sbin:/usr/local/opt/icu4c/bin:/Applications/XAMPP/xamppfiles/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin</span>"
-</pre><script>Sfdump("sf-dump-1026302265")</script>
+                <td><pre class=sf-dump id=sf-dump-1711478841 data-indent-pad="  ">"<span class=sf-dump-str title="108 characters">/usr/local/opt/icu4c/sbin:/usr/local/opt/icu4c/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin</span>"
+</pre><script>Sfdump("sf-dump-1711478841")</script>
 </td>
               </tr>
                           <tr>
                 <td>DYLD_LIBRARY_PATH</td>
-                <td><pre class=sf-dump id=sf-dump-1701016489 data-indent-pad="  ">"<span class=sf-dump-str title="69 characters">/Applications/XAMPP/xamppfiles/lib:/Applications/XAMPP/xamppfiles/lib</span>"
-</pre><script>Sfdump("sf-dump-1701016489")</script>
+                <td><pre class=sf-dump id=sf-dump-537917755 data-indent-pad="  ">"<span class=sf-dump-str title="69 characters">/Applications/XAMPP/xamppfiles/lib:/Applications/XAMPP/xamppfiles/lib</span>"
+</pre><script>Sfdump("sf-dump-537917755")</script>
 </td>
               </tr>
                           <tr>
                 <td>SERVER_SIGNATURE</td>
-                <td><pre class=sf-dump id=sf-dump-146925367 data-indent-pad="  ">""
-</pre><script>Sfdump("sf-dump-146925367")</script>
+                <td><pre class=sf-dump id=sf-dump-1782650814 data-indent-pad="  ">""
+</pre><script>Sfdump("sf-dump-1782650814")</script>
 </td>
               </tr>
                           <tr>
                 <td>SERVER_SOFTWARE</td>
-                <td><pre class=sf-dump id=sf-dump-818305229 data-indent-pad="  ">"<span class=sf-dump-str title="67 characters">Apache/2.4.16 (Unix) OpenSSL/1.0.1p mod_perl/2.0.8-dev Perl/v5.16.3</span>"
-</pre><script>Sfdump("sf-dump-818305229")</script>
+                <td><pre class=sf-dump id=sf-dump-1277929313 data-indent-pad="  ">"<span class=sf-dump-str title="67 characters">Apache/2.4.16 (Unix) OpenSSL/1.0.1p mod_perl/2.0.8-dev Perl/v5.16.3</span>"
+</pre><script>Sfdump("sf-dump-1277929313")</script>
 </td>
               </tr>
                           <tr>
                 <td>SERVER_NAME</td>
-                <td><pre class=sf-dump id=sf-dump-634115970 data-indent-pad="  ">"<span class=sf-dump-str title="9 characters">localhost</span>"
-</pre><script>Sfdump("sf-dump-634115970")</script>
+                <td><pre class=sf-dump id=sf-dump-281167743 data-indent-pad="  ">"<span class=sf-dump-str title="9 characters">localhost</span>"
+</pre><script>Sfdump("sf-dump-281167743")</script>
 </td>
               </tr>
                           <tr>
                 <td>SERVER_ADDR</td>
-                <td><pre class=sf-dump id=sf-dump-871154316 data-indent-pad="  ">"<span class=sf-dump-str title="3 characters">::1</span>"
-</pre><script>Sfdump("sf-dump-871154316")</script>
+                <td><pre class=sf-dump id=sf-dump-408650028 data-indent-pad="  ">"<span class=sf-dump-str title="3 characters">::1</span>"
+</pre><script>Sfdump("sf-dump-408650028")</script>
 </td>
               </tr>
                           <tr>
                 <td>SERVER_PORT</td>
-                <td><pre class=sf-dump id=sf-dump-272549846 data-indent-pad="  ">"<span class=sf-dump-str title="2 characters">80</span>"
-</pre><script>Sfdump("sf-dump-272549846")</script>
+                <td><pre class=sf-dump id=sf-dump-1270314336 data-indent-pad="  ">"<span class=sf-dump-str title="2 characters">80</span>"
+</pre><script>Sfdump("sf-dump-1270314336")</script>
 </td>
               </tr>
                           <tr>
                 <td>REMOTE_ADDR</td>
-                <td><pre class=sf-dump id=sf-dump-806624579 data-indent-pad="  ">"<span class=sf-dump-str title="3 characters">::1</span>"
-</pre><script>Sfdump("sf-dump-806624579")</script>
+                <td><pre class=sf-dump id=sf-dump-8970689 data-indent-pad="  ">"<span class=sf-dump-str title="3 characters">::1</span>"
+</pre><script>Sfdump("sf-dump-8970689")</script>
 </td>
               </tr>
                           <tr>
                 <td>DOCUMENT_ROOT</td>
-                <td><pre class=sf-dump id=sf-dump-911516357 data-indent-pad="  ">"<span class=sf-dump-str title="37 characters">/Applications/XAMPP/xamppfiles/htdocs</span>"
-</pre><script>Sfdump("sf-dump-911516357")</script>
+                <td><pre class=sf-dump id=sf-dump-299425828 data-indent-pad="  ">"<span class=sf-dump-str title="37 characters">/Applications/XAMPP/xamppfiles/htdocs</span>"
+</pre><script>Sfdump("sf-dump-299425828")</script>
 </td>
               </tr>
                           <tr>
                 <td>REQUEST_SCHEME</td>
-                <td><pre class=sf-dump id=sf-dump-313726103 data-indent-pad="  ">"<span class=sf-dump-str title="4 characters">http</span>"
-</pre><script>Sfdump("sf-dump-313726103")</script>
+                <td><pre class=sf-dump id=sf-dump-2011831995 data-indent-pad="  ">"<span class=sf-dump-str title="4 characters">http</span>"
+</pre><script>Sfdump("sf-dump-2011831995")</script>
 </td>
               </tr>
                           <tr>
                 <td>CONTEXT_PREFIX</td>
-                <td><pre class=sf-dump id=sf-dump-1988635848 data-indent-pad="  ">""
-</pre><script>Sfdump("sf-dump-1988635848")</script>
+                <td><pre class=sf-dump id=sf-dump-1939555452 data-indent-pad="  ">""
+</pre><script>Sfdump("sf-dump-1939555452")</script>
 </td>
               </tr>
                           <tr>
                 <td>CONTEXT_DOCUMENT_ROOT</td>
-                <td><pre class=sf-dump id=sf-dump-611782557 data-indent-pad="  ">"<span class=sf-dump-str title="37 characters">/Applications/XAMPP/xamppfiles/htdocs</span>"
-</pre><script>Sfdump("sf-dump-611782557")</script>
+                <td><pre class=sf-dump id=sf-dump-1435586933 data-indent-pad="  ">"<span class=sf-dump-str title="37 characters">/Applications/XAMPP/xamppfiles/htdocs</span>"
+</pre><script>Sfdump("sf-dump-1435586933")</script>
 </td>
               </tr>
                           <tr>
                 <td>SERVER_ADMIN</td>
-                <td><pre class=sf-dump id=sf-dump-1777722065 data-indent-pad="  ">"<span class=sf-dump-str title="15 characters">you@example.com</span>"
-</pre><script>Sfdump("sf-dump-1777722065")</script>
+                <td><pre class=sf-dump id=sf-dump-636139753 data-indent-pad="  ">"<span class=sf-dump-str title="15 characters">you@example.com</span>"
+</pre><script>Sfdump("sf-dump-636139753")</script>
 </td>
               </tr>
                           <tr>
                 <td>SCRIPT_FILENAME</td>
-                <td><pre class=sf-dump id=sf-dump-1532287267 data-indent-pad="  ">"<span class=sf-dump-str title="54 characters">/Applications/XAMPP/xamppfiles/htdocs/stifix/index.php</span>"
-</pre><script>Sfdump("sf-dump-1532287267")</script>
+                <td><pre class=sf-dump id=sf-dump-2046888000 data-indent-pad="  ">"<span class=sf-dump-str title="54 characters">/Applications/XAMPP/xamppfiles/htdocs/stifix/index.php</span>"
+</pre><script>Sfdump("sf-dump-2046888000")</script>
 </td>
               </tr>
                           <tr>
                 <td>REMOTE_PORT</td>
-                <td><pre class=sf-dump id=sf-dump-1439537291 data-indent-pad="  ">"<span class=sf-dump-str title="5 characters">64440</span>"
-</pre><script>Sfdump("sf-dump-1439537291")</script>
+                <td><pre class=sf-dump id=sf-dump-658240545 data-indent-pad="  ">"<span class=sf-dump-str title="5 characters">49492</span>"
+</pre><script>Sfdump("sf-dump-658240545")</script>
 </td>
               </tr>
                           <tr>
                 <td>REDIRECT_URL</td>
-                <td><pre class=sf-dump id=sf-dump-1757819246 data-indent-pad="  ">"<span class=sf-dump-str title="27 characters">/stifix/resume/recognitions</span>"
-</pre><script>Sfdump("sf-dump-1757819246")</script>
+                <td><pre class=sf-dump id=sf-dump-1515855075 data-indent-pad="  ">"<span class=sf-dump-str title="27 characters">/stifix/resume/recognitions</span>"
+</pre><script>Sfdump("sf-dump-1515855075")</script>
 </td>
               </tr>
                           <tr>
                 <td>GATEWAY_INTERFACE</td>
-                <td><pre class=sf-dump id=sf-dump-1751866595 data-indent-pad="  ">"<span class=sf-dump-str title="7 characters">CGI/1.1</span>"
-</pre><script>Sfdump("sf-dump-1751866595")</script>
+                <td><pre class=sf-dump id=sf-dump-1673560909 data-indent-pad="  ">"<span class=sf-dump-str title="7 characters">CGI/1.1</span>"
+</pre><script>Sfdump("sf-dump-1673560909")</script>
 </td>
               </tr>
                           <tr>
                 <td>SERVER_PROTOCOL</td>
-                <td><pre class=sf-dump id=sf-dump-571549129 data-indent-pad="  ">"<span class=sf-dump-str title="8 characters">HTTP/1.1</span>"
-</pre><script>Sfdump("sf-dump-571549129")</script>
+                <td><pre class=sf-dump id=sf-dump-1086847351 data-indent-pad="  ">"<span class=sf-dump-str title="8 characters">HTTP/1.1</span>"
+</pre><script>Sfdump("sf-dump-1086847351")</script>
 </td>
               </tr>
                           <tr>
                 <td>REQUEST_METHOD</td>
-                <td><pre class=sf-dump id=sf-dump-2056675872 data-indent-pad="  ">"<span class=sf-dump-str title="3 characters">GET</span>"
-</pre><script>Sfdump("sf-dump-2056675872")</script>
+                <td><pre class=sf-dump id=sf-dump-2116575153 data-indent-pad="  ">"<span class=sf-dump-str title="3 characters">GET</span>"
+</pre><script>Sfdump("sf-dump-2116575153")</script>
 </td>
               </tr>
                           <tr>
                 <td>QUERY_STRING</td>
-                <td><pre class=sf-dump id=sf-dump-2021315769 data-indent-pad="  ">""
-</pre><script>Sfdump("sf-dump-2021315769")</script>
+                <td><pre class=sf-dump id=sf-dump-1908849675 data-indent-pad="  ">""
+</pre><script>Sfdump("sf-dump-1908849675")</script>
 </td>
               </tr>
                           <tr>
                 <td>REQUEST_URI</td>
-                <td><pre class=sf-dump id=sf-dump-60131113 data-indent-pad="  ">"<span class=sf-dump-str title="27 characters">/stifix/resume/recognitions</span>"
-</pre><script>Sfdump("sf-dump-60131113")</script>
+                <td><pre class=sf-dump id=sf-dump-1739543991 data-indent-pad="  ">"<span class=sf-dump-str title="27 characters">/stifix/resume/recognitions</span>"
+</pre><script>Sfdump("sf-dump-1739543991")</script>
 </td>
               </tr>
                           <tr>
                 <td>SCRIPT_NAME</td>
-                <td><pre class=sf-dump id=sf-dump-183702379 data-indent-pad="  ">"<span class=sf-dump-str title="17 characters">/stifix/index.php</span>"
-</pre><script>Sfdump("sf-dump-183702379")</script>
+                <td><pre class=sf-dump id=sf-dump-272457113 data-indent-pad="  ">"<span class=sf-dump-str title="17 characters">/stifix/index.php</span>"
+</pre><script>Sfdump("sf-dump-272457113")</script>
 </td>
               </tr>
                           <tr>
                 <td>PHP_SELF</td>
-                <td><pre class=sf-dump id=sf-dump-752601679 data-indent-pad="  ">"<span class=sf-dump-str title="17 characters">/stifix/index.php</span>"
-</pre><script>Sfdump("sf-dump-752601679")</script>
+                <td><pre class=sf-dump id=sf-dump-1522782169 data-indent-pad="  ">"<span class=sf-dump-str title="17 characters">/stifix/index.php</span>"
+</pre><script>Sfdump("sf-dump-1522782169")</script>
 </td>
               </tr>
                           <tr>
                 <td>REQUEST_TIME_FLOAT</td>
-                <td><pre class=sf-dump id=sf-dump-2043089734 data-indent-pad="  "><span class=sf-dump-num>1508455335.544</span>
-</pre><script>Sfdump("sf-dump-2043089734")</script>
+                <td><pre class=sf-dump id=sf-dump-284755761 data-indent-pad="  "><span class=sf-dump-num>1508975169.467</span>
+</pre><script>Sfdump("sf-dump-284755761")</script>
 </td>
               </tr>
                           <tr>
                 <td>REQUEST_TIME</td>
-                <td><pre class=sf-dump id=sf-dump-1921527722 data-indent-pad="  "><span class=sf-dump-num>1508455335</span>
-</pre><script>Sfdump("sf-dump-1921527722")</script>
+                <td><pre class=sf-dump id=sf-dump-206341451 data-indent-pad="  "><span class=sf-dump-num>1508975169</span>
+</pre><script>Sfdump("sf-dump-206341451")</script>
 </td>
               </tr>
                         </table>
