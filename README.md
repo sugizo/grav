@@ -1,6 +1,6 @@
 # Clone the repository
 	cd ~/git
-	git clone https://github.com/sugizo/grav_blackhole-build
+	git clone https://github.com/sugizo/grav-blackhole-build
 
 # Create File
 	cd grav
